@@ -23,9 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-
 
 
 # Application definition
@@ -120,7 +117,6 @@ USE_TZ = True
 
 
 # database settings
-
 
 try:
     from .prod import *
