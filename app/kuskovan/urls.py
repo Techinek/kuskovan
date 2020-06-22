@@ -19,6 +19,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
+    path('tinymce/', include('tinymce.urls')),
     path('', include('blog.urls')),
 ]
 if settings.DEBUG:

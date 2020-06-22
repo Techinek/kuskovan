@@ -37,6 +37,8 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'captcha',
+    'tinymce',
+
 
     'blog.apps.BlogConfig',
 
@@ -121,10 +123,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # database settings
 

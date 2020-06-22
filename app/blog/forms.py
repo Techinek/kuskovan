@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from captcha.fields import CaptchaField
 
-from .models import Comment
 
+from .models import Comment
 
 class CommentForm(forms.ModelForm):
     """Class for blog comment form"""

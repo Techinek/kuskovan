@@ -2,13 +2,23 @@ from django.contrib import admin
 from django import forms
 from django.utils.safestring import mark_safe
 
+from tinymce.widgets import TinyMCE
 
 from .models import Post, Category, Tag, Comment
 
+class PostAdminForm(forms.ModelForm):
+    """TinyMCE model connected with Post model"""
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+
+    class Meta:
+        model = Post
+        fields = '__all__'
 
 class PostAdmin(admin.ModelAdmin):
+
     """Post model representation in the admin area
-     with a form field for CKEditor model"""
+     with a form field for TinyMCE model"""
+    form = PostAdminForm
     list_display = ('id', 'title', 'category', 'created_at', 'updated_at', 'published', 'get_image')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'content')
@@ -25,7 +35,7 @@ class PostAdmin(admin.ModelAdmin):
             'fields': ('category', 'tags')
         }),
         ('Promotion', {
-            'fields': ('menu_title', 'featured', 'published')
+            'fields': ('featured', 'published')
         }),
         ('Secondary info', {
             'fields': ('views', 'created_at', 'updated_at',)
