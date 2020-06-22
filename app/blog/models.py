@@ -18,7 +18,7 @@ class Category(models.Model):
         return reverse('category', kwargs={'category_slug': self.slug})
 
     def __str__(self):
-        return self.title
+        return self.menu_title
 
     class Meta:
         verbose_name = 'Категория'
@@ -39,7 +39,7 @@ class Tag(models.Model):
         return reverse('tag', kwargs={'tag_slug': self.slug})
 
     def __str__(self):
-        return self.title
+        return self.menu_title
 
     class Meta:
         verbose_name = 'Тег'
