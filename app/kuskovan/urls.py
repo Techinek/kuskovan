@@ -22,6 +22,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('blog.urls')),
+    path('', include('pages.urls')),
 ]
 if settings.DEBUG:
     from django.conf.urls.static import static

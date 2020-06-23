@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leven - Resume / CV / vCard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Leven - Resume / CV / vCard Template" />
+    <meta name="author" content="kuskovan" />
+    <link rel="shortcut icon" href="{% static 'theme/favicon.ico' %}">
+
+
+    <link rel="stylesheet" href="{% static 'theme/css/normalize.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'theme/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'theme/css/owl.carousel.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'theme/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'theme/css/main.css' %}" type="text/css">
+
+    <script src="{% static 'theme/js/modernizr.custom.js' %}"></script>
+  </head>
+
+  <body class="page">
+
+    <div class="lm-animated-bg"></div>
+
+    <!-- Loading animation -->
+    <div class="preloader">
+      <div class="preloader-animation">
+        <div class="preloader-spinner">
+        </div>
+      </div>
+    </div>
+    <!-- /Loading animation -->
+
+    <!-- Scroll To Top Button -->
+    <div class="lmpixels-scroll-to-top"><i class="lnr lnr-chevron-up"></i></div>
+    <!-- /Scroll To Top Button -->
+
+    <div class="page-scroll">
+      <div id="page_container" class="page-container bg-move-effect" data-animation="transition-flip-in-right">
+
+        <!-- Header -->
+        {% include 'includes/header.html' %}
+        <!-- /Header -->
+
+        <div id="main" class="site-main">
+          <div id="main-content" class="single-page-content">
+            <div id="primary" class="content-area">
+              <div id="content" class="page-content site-content {% block single_post %}single-post"{% endblock %} role="main">
+                  {% block content %}
+                <!-- Home Page Top Part -->
+                    <div class="row">
+                  <div class=" col-xs-12 col-sm-12">
+                    <div class="home-content">
+                      <div class="row flex-v-align">
+
+                        <div class="col-sm-12 col-md-5 col-lg-5">
+                          <div class="home-photo">
+                            <div class="hp-inner" style="background-image: url({% static 'theme/./img/main_photo.jpg' %});">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                          <div class="home-text hp-left">
+                            <div class="owl-carousel text-rotation">
+                              <div class="item">
+                                <h4>Frontend-developer</h4>
+                              </div>
+
+                              <div class="item">
+                                <h4>Web Designer</h4>
+                              </div>
+                            </div>
+
+                            <h1>Alex Smith</h1>
+                            <p>Fusce tempor magna mi, non egestas velit ultricies nec. Aenean convallis, risus non condimentum gravida, odio mauris ullamcorper felis, ut venenatis purus ex eu mi. Quisque imperdiet lacinia urna, a placerat sapien pretium eu.</p>
+
+                            <div class="home-buttons">
+                              <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
+                              <a href="#" target="_self" class="btn btn-secondary">Contact</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Home Page Top Part -->
+
+                <!-- Services -->
+                    {% include 'includes/services.html' %}
+                <!-- /Services -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                    <div class="p-20"></div>
+
+                    <!-- Testimonials -->
+                      {% include 'includes/testimonials.html' %}
+                    <!-- /Testimonials -->
+
+                    <div class="p-40"></div>
+
+                    <!-- Clients Slider -->
+                        {% include 'includes/clients_slider.html' %}
+                    <!-- /Clients Slider -->
+
+                    <div class="p-40"></div>
+
+                  </div>
+                </div>
+
+                <!-- Fun Facts -->
+                    {% include 'includes/fun_facts.html' %}
+                <!-- /Fun Facts -->
+
+                <div class="p-40"></div>
+
+                <!-- Pricing -->
+            {% include 'includes/pricing.html' %}
+                <!-- /Pricing -->
+              </div>
+    {% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        {% include 'includes/footer.html' %}
+        <!-- /Footer -->
+
+      </div>
+    </div>
+
+    <script src="{% static 'theme/js/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'theme/js/imagesloaded.pkgd.min.js' %}"></script>
+{#    <script src="{% static 'https://www.google.com/recaptcha/api.js' %}"></script>#}
+    <script src="{% static 'theme/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'theme/js/jquery.shuffle.min.js' %}"></script>
+    <script src="{% static 'theme/js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'theme/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'theme/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrDf32aQTCVENBhFJbMBKOUTiUAABtC2o"></script>
+    <script src="{% static 'theme/js/jquery.googlemap.js' %}"></script>
+    <script src="{% static 'theme/js/validator.js' %}"></script>
+    <script src="{% static 'theme/js/main.js' %}"></script>
+  </body>
+</html>

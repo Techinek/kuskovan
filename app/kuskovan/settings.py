@@ -40,8 +40,11 @@ INSTALLED_APPS = [
     'captcha',
     'ckeditor',
     'ckeditor_uploader',
+    'mptt',
 
     'blog.apps.BlogConfig',
+    'pages.apps.PagesConfig',
+    'menu.apps.MenuConfig',
 
 
 

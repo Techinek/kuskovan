@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block single_post %}{% endblock %}
+{% block content %}
+    <article class="post">
 
-</body>
-</html>
+                  <header class="entry-header">
+                    <div class="entry-meta entry-meta-top">
+                      <span><a href="{{ post.category.get_absolute_url }}" rel="category tag">{{ post.category }}</a></span>
+                    </div><!-- .entry-meta -->
+
+                    <h1 class="entry-title">{{ post.title }}</h1>
+                  </header><!-- .entry-header -->
+
+                  <div class="post-thumbnail">
+                    <img src="{{ post.image.url }}" alt=""  />
+                  </div>
+
+                  <div class="post-content">
+                    <div class="entry-content">
+
+                      <div class="row">
+                        <div class=" col-xs-12 col-sm-12 ">
+
+                            {{ post.content|safe }}
+
+                        </div>
+                      </div>
+
+                    </div><!-- .entry-content -->
+
+                    <div class="entry-meta entry-meta-bottom">
+                      <div class="date-author">
+
+                        <span class="entry-date">
+
+                            <i class="far fa-clock"></i>
+                            <time class="entry-date" datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:'d.m.Y' }}</time>
+
+                        </span>
+
+                        <span class="author vcard">
+                          <a class="url fn n" href="{% url 'page' 'about' %}" rel="author">
+                            <i class="fas fa-user"></i>
+                            <span> Kuskovan</span>
+                          </a>
+                        </span>
+                      </div>
+
+                      <!-- Share Buttons -->
+                        <div class="entry-share btn-group share-buttons">
+                        <a class="social-icon facebook-icon text-xs-center color-white" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Поделиться на Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://kuskovan.ru{{ request.get_full_path|urlencode }}&title={{post.title}}"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-icon vk-icon text-xs-center color-white" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Поделиться в Контакте" href="https://vk.com/share.php?url=https://kuskovan.ru{{ request.get_full_path|urlencode }}&title={{post.title}}&image={{ post.image }}&text={{ post.intro_text }}"><i class="fab fa-vk"></i></a>
+                        <a class="social-icon telegram-icon text-xs-center color-white" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" class="btn" target="_blank" title="Поделиться в Телеграме" href="https://telegram.me/share/url?url=https://kuskovan.ru{{ request.get_full_path|urlencode }}&text={{ post.intro_text }}"><i class="fab fa-telegram-plane "></i></a>
+                      </div>
+                      <!-- /Share Buttons -->
+                    </div>
+
+                    <div class="post-tags">
+                      <span class="tags">
+                          {% for tag in post.tags.all %}
+                        <a href="{{ tag.get_absolute_url }}" rel="tag">{{ tag }}</a>
+                          {% endfor %}
+                      </span>
+                    </div>
+                  </div>
+                </article>
+{% endblock %}
