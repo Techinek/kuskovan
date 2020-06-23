@@ -10,7 +10,7 @@
                 <ul class="sub-menu">
                     {% for child in node.get_children %}
                         <li class="menu-item current-menu-item">
-                            <a href="{{ child.get_absolute_url }}">{{ child}}</a>
+                            <a href="{{ child.get_absolute_url }}">{{ child }}</a>
                         </li>
                     {% endfor %}
                 </ul>

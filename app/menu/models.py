@@ -40,10 +40,13 @@ class MenuItem(MPTTModel):
     )
 
     def get_absolute_url(self):
-        if self.sort == 2:
+        print(dir(self.parent))
+        if self.parent:
             return reverse('category', kwargs={'category_slug': self.slug})
         else:
             return reverse('page', kwargs={'page_slug': self.slug})
+
+
 
     def __str__(self):
         return self.name
