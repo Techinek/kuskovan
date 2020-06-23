@@ -2,13 +2,14 @@ from django.contrib import admin
 from django import forms
 from django.utils.safestring import mark_safe
 
-from tinymce.widgets import TinyMCE
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from .models import Post, Category, Tag, Comment
 
 class PostAdminForm(forms.ModelForm):
-    """TinyMCE model connected with Post model"""
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    """CKEDITOR model connected with Post model"""
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+
 
     class Meta:
         model = Post
@@ -17,7 +18,7 @@ class PostAdminForm(forms.ModelForm):
 class PostAdmin(admin.ModelAdmin):
 
     """Post model representation in the admin area
-     with a form field for TinyMCE model"""
+     with a form field for CKEDITOR model"""
     form = PostAdminForm
     list_display = ('id', 'title', 'category', 'created_at', 'updated_at', 'published', 'get_image')
     list_display_links = ('id', 'title')

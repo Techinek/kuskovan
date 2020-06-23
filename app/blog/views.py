@@ -52,7 +52,9 @@ class Posts(ListView):
     context_object_name = 'posts'
     allow_empty = False
     paginate_by = 5
-    queryset = Post.objects.filter(published=True).select_related('category').prefetch_related('tags')
+
+    def get_queryset(self, *args, **kwargs):
+        return Post.objects.filter(published=True).select_related('category').prefetch_related('tags')
 
 
 class PostsByCategory(ListView):
@@ -99,9 +101,7 @@ class Search(ListView):
 
     def get_queryset(self):
         q = self.request.GET.get('s')
-        return Post.objects.filter(
-            Q(title__icontains=q) | Q(content__icontains=q) | Q(intro_text__icontains=q)
-        )
+        return Post.objects.filter(Q(title__icontains=q) | Q(content__icontains=q) | Q(intro_text__icontains=q))
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
