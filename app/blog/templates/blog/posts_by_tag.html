@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block category_title %}
+{% block framed_title %}
     <div class="page-title">
         <h1>{{ tg.title }}</h1>
         <div class="page-subtitle">
@@ -15,9 +15,38 @@
 {% endblock %}
 
 {% block content %}
-    {% for post in posts %}
-        {{ post.title }}
-        <a href="{{ post.get_absolute_url }}">Читать!</a>
-    {% endfor %}
+    <div class="row">
+        <div class=" col-xs-12 col-sm-12 ">
+
+            <div class="blog-masonry two-columns clearfix">
+                <!-- Blog Post  -->
+                {% for post in posts %}
+
+                    <div class="item">
+                        <div class="blog-card">
+                            <div class="media-block">
+                                <div class="category">
+                                    <a href="{{ post.category.get_absolute_url }}" title="Посмотреть все посты по категории {{ post.category.menu_title }}">{{ post.category.menu_title }}</a>
+                                </div>
+                                <a href="{{ post.get_absolute_url }}">
+                                    <img src="{{ post.image.url }}" alt="{{ post.seo_description }}" title="{{ post.seo_title }}" />
+                                    <div class="mask"></div>
+                                </a>
+                            </div>
+                            <div class="post-info">
+                                <div class="post-date">{{ post.created_at|date:'d.m.Y' }}</div>
+                                <a href="{{ post.get_absolute_url }}">
+                                    <h2 class="blog-item-title">{{ post.title }}</h2>
+                                    <p class="mt-2" >{{ post.intro_text }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!-- End of Blog Post  -->
+            </div>
+            <a class="btn btn-primary" href="#">See All Posts</a>
+        </div>
+    </div>
 
 {% endblock %}

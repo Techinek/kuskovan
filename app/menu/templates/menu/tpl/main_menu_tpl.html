@@ -1,28 +1,43 @@
 {% load mptt_tags %}
 
-
-    <div class="site-nav mobile-menu-hide">
+<div class="site-nav mobile-menu-hide">
     <ul class="leven-classic-menu site-main-menu">
-    {% recursetree menu_items %}
-        {% if not node.is_leaf_node %}
-            <li class="menu-item menu-item-has-children current-menu-item">
-                <a>{{ node.name }}</a>
-                <ul class="sub-menu">
-                    {% for child in node.get_children %}
-                        <li class="menu-item current-menu-item">
-                            <a href="{{ child.get_absolute_url }}">{{ child }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% elif node.is_leaf_node %}
-            <li class="menu-item">
-                <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
-            </li>
-        {% endif %}
-    {% endrecursetree %}
-    </ul>
+        {% recursetree menu_items %}
+            {% if not node.is_leaf_node %}
+                <li class="menu-item menu-item-has-children current-menu-item">
+                    <a>{{ node.name }}</a>
+                    <ul class="sub-menu">
+                        {% for child in node.get_children %}
+                            <li class="menu-item current-menu-item">
+                                <a href="{{ child.get_absolute_url }}">{{ child }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% elif node.is_leaf_node %}
+                <li class="menu-item">
+                    <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+                </li>
+            {% endif %}
+        {% endrecursetree %}
 
+{#        <li class="menu-item">#}
+{#            <form action="">#}
+{#                <li class="menu-item">#}
+{#                    <input type="text" placeholder="Поиск"></i>#}
+{#                </li>#}
+{#                <li class="menu-item">#}
+{#                    <div class="d-none d-md-block">#}
+{#                        <button class="search-icon ml-0" ><i class="fa fa-search"></i></button>#}
+{#                    </div>#}
+{#                </li>#}
+{#            </form>#}
+{#        </li>#}
+
+
+
+
+    </ul>
 </div>
 
 
