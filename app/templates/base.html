@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{% static 'theme/css/magnific-popup.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'theme/css/main.css' %}" type="text/css">
 
+
     <script src="{% static 'theme/js/modernizr.custom.js' %}"></script>
   </head>
 
@@ -67,20 +68,20 @@
                           <div class="home-text hp-left">
                             <div class="owl-carousel text-rotation">
                               <div class="item">
-                                <h4>Frontend-developer</h4>
+                                <h4>Seo-специалист</h4>
                               </div>
 
                               <div class="item">
-                                <h4>Web Designer</h4>
+                                <h4>Веб-аналитик и немного разработчик</h4>
                               </div>
                             </div>
 
-                            <h1>Alex Smith</h1>
-                            <p>Fusce tempor magna mi, non egestas velit ultricies nec. Aenean convallis, risus non condimentum gravida, odio mauris ullamcorper felis, ut venenatis purus ex eu mi. Quisque imperdiet lacinia urna, a placerat sapien pretium eu.</p>
+                            <h1>Кусков Андрей</h1>
+                            <p>Более 7 лет в интернет-маркетинге, специализируюсь на seo и веб-аналитике. Последние 2 года увлекаюсь программированием на языке Python.</p>
 
                             <div class="home-buttons">
-                              <a href="#" target="_blank" class="btn btn-primary">Download CV</a>
-                              <a href="#" target="_self" class="btn btn-secondary">Contact</a>
+                              <a href="{% static 'theme/kuskov_andrey_resume.pdf' %}" target="_blank" class="btn btn-primary">Просмотреть резюме</a>
+                              <a href="{% url 'page' 'about' %}" target="_self" class="btn btn-secondary">Связаться со мной</a>
                             </div>
                           </div>
                         </div>
