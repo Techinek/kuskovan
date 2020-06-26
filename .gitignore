@@ -258,3 +258,4 @@ www/
 #Local machine
 .idea/
 /app/kuskovan/local.py
+/app/kuskovan/static/
