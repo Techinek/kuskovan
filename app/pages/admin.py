@@ -3,7 +3,7 @@ from django import forms
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
-from .models import Page
+from .models import Page, Feedback
 
 class PageAdminForm(forms.ModelForm):
     """CKEDITOR model connected with Page model"""
@@ -36,3 +36,4 @@ class PageAdmin(admin.ModelAdmin):
     save_on_top = True
 
 admin.site.register(Page, PageAdmin)
+admin.site.register(Feedback)

@@ -134,7 +134,13 @@ USE_TZ = True
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
+        "removePlugins": "stylesheetparser",
+        "removeEmpty['i']" : False,
         'skin': 'moono-lisa',
+        'allowedContent': True,
+        'extraAllowedContent': '*(*);*{*}',
+        'fillEmptyBlocks': False,
+        'ignoreEmptyParagraph': True,
         # 'skin': 'office2013',
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
@@ -182,8 +188,7 @@ CKEDITOR_CONFIGS = {
         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
 
-        'allowedContent': True,
-        'extraAllowedContent': '*(*)',
+
 
         #custom settings for codemirror plugin
         'codemirror': {
@@ -196,6 +201,7 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join([
             'uploadimage', # the upload image feature
             # your extra plugins here
+
             'div',
             'autolink',
             'autoembed',
@@ -215,12 +221,10 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-
-
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
+CAPTCHA_LETTER_ROTATION = None
+CAPTCHA_NOISE_FUNCTIONS = None
 # database settings
-
 try:
     from .prod import *
 except:

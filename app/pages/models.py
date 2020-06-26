@@ -24,3 +24,19 @@ class Page(models.Model):
         verbose_name = 'Страница'
         verbose_name_plural = 'Страницы'
         unique_together = ('slug',)
+
+
+class Feedback(models.Model):
+    """Model for getting orders from contacts page"""
+    name = models.CharField(verbose_name='Имя', max_length=120)
+    email = models.EmailField(verbose_name="Электронная почта", max_length=300)
+    subject = models.CharField(verbose_name='Тема', max_length=120)
+    content = models.TextField(verbose_name='Содержимое', max_length=1400)
+
+    def __str__(self):
+        return f"{self.subject} от {self.name}"
+
+    class Meta:
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
+
