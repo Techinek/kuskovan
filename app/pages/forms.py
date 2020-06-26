@@ -39,7 +39,7 @@ class FeedBackForm(forms.ModelForm):
         widget=forms.Textarea(
             attrs={
                 'class': 'form-control',
-                'rows': 11,
+                'rows': 2,
                 'placeholder': 'Слушаю вас...',
                 'data-error': 'Забыли написать, в чем суть проблемы',
             }

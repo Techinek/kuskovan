@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block seo_title %}{{ tg.seo_title }}{% endblock %}
+{% block meta_description %}{{ tg.seo_description }}{% endblock %}
 {% block framed_title %}
     <div class="page-title">
         <h1>{{ tg.title }}</h1>
