@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.conf import settings
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import F, Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
@@ -17,7 +18,7 @@ from .models import Category, Tag, Post, Comment
 from .forms import CommentForm
 
 
-class PostDetail(DetailView, FormView):
+class PostDetail(SuccessMessageMixin, DetailView, FormView):
     model = Post
     form_class = CommentForm
     template_name = 'blog/post_detail.html'
@@ -43,6 +44,9 @@ class PostDetail(DetailView, FormView):
     def get_success_url(self):
         post = get_object_or_404(Post, slug=self.kwargs['post_slug'])
         return post.get_absolute_url()
+
+    def get_success_message(self, cleaned_data):
+        return 'Спасибо за комментарий. После модерации он появится под этой статьей!'
 
 
 class Posts(ListView):
