@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block seo_title %}{{ post.seo_title }}{% endblock %}
+{% block meta_description %}{{ post.seo_description }}{% endblock %}
+{% block framed_title %}
+    <div class="page-title">
+        <h1>Вход на сайт</h1>
+        <div class="page-subtitle">
+            <nav aria-label="breadcrumb">
+                <ol class="nav">
+                    <li class="breadcrumb-item"><a class="text-secondary" href="/">Kuskovan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">вход на сайт</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+        <div class="col-md-5 text-center mt-60">
+            <h2>Введите логин и пароль</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-15">
+        <div class="col-md-5">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+            <hr>
+            <div class="text-center">
+                <p class="text-center">
+                     <a href="{% url 'register' %}" class="btn btn-secondary">Если не зарегистрированы, то пройдите регистрацию</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

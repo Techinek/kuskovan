@@ -126,7 +126,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
 
+CAPTCHA_LETTER_ROTATION = None
+CAPTCHA_NOISE_FUNCTIONS = None
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -222,8 +226,7 @@ CKEDITOR_CONFIGS = {
 }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-CAPTCHA_LETTER_ROTATION = None
-CAPTCHA_NOISE_FUNCTIONS = None
+
 # database settings
 try:
     from .prod import *

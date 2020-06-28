@@ -15,7 +15,7 @@ from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.views.generic.base import View
 
 from .models import Category, Tag, Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, UserLoginForm, UserRegisterForm
 
 
 class PostDetail(SuccessMessageMixin, DetailView, FormView):
@@ -112,7 +112,19 @@ class Search(ListView):
         return context
 
 
+class RegisterUser(CreateView):
+    form_class = UserRegisterForm
+    success_url = reverse_lazy('login')
+    template_name = 'blog/register.html'
 
+
+class LoginUser(LoginView):
+    template_name = 'blog/login.html'
+    form_class = UserLoginForm
+
+    def get_success_url(self):
+        url = self.get_redirect_url()
+        return url or resolve_url(settings.LOGIN_REDIRECT_URL)
 
 
 

@@ -1,26 +1,33 @@
 {% load static %}
 {% load menu_tags %}
 <header id="site_header" class="header">
-          <div class="header-content clearfix">
+    <div class="header-content clearfix">
 
-            <!-- Text Logo -->
-            <div class="text-logo">
-              <a href="/">
+        <!-- Text Logo -->
+        <div class="text-logo">
+            <a href="/">
                 <div class="logo-symbol">A</div>
                 <div class="logo-text">Андрей <span>Кусков</span></div>
-              </a>
-            </div>
-            <!-- /Text Logo -->
-
-            <!-- Navigation -->
-              {% get_menu_item %}
-
-
-
-            <!-- Mobile Menu Toggle -->
-            <a class="menu-toggle mobile-visible">
-              <i class="fa fa-bars"></i>
             </a>
-            <!-- Mobile Menu Toggle -->
-          </div>
-        </header>
+        </div>
+
+        <!-- /Text Logo -->
+        <!-- Navigation -->
+        <div class="site-nav mobile-menu-hide">
+            <ul class="leven-classic-menu site-main-menu">
+                {% get_menu_item %}
+                {% if request.user.is_authenticated %}
+                        <li class="menu-item"><a class="btn btn-primary authbtnlh" href="{% url 'logout' %}">Выйти</a></li>
+                    {% else %}
+                        <li class="menu-item"><a class="btn btn-primary authbtnlh" href="{% url 'login' %}">Войти</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <a class="menu-toggle mobile-visible">
+            <i class="fa fa-bars"></i>
+        </a>
+        <!-- Mobile Menu Toggle -->
+    </div>
+</header>
