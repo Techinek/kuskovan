@@ -47,7 +47,40 @@
                 {% endfor %}
                 <!-- End of Blog Post  -->
             </div>
-            <a class="btn btn-primary" href="#">See All Posts</a>
+        {% if page_obj.has_other_pages %}
+            <div class="pagination-area text-uppercase wow fadeInUp animated">
+                <div class="pagination-area-inner">
+                    <ul class="pagination justify-content-start">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary" tabindex="-1">Назад</a>
+                            </li>
+                        {% endif %}
+                        {% for page_num in page_obj.paginator.page_range %}
+
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active" aria-current="page">
+                                    <a href="?page={{ page_num }}" class="btn btn-secondary">{{ page_num }}
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                            {% elif page_num > page_obj.number|add:-3 and page_num < page_obj.number|add:3 %}
+                                <li class="page-item">
+                                    <a href="?page={{ page_num}}" class="btn btn-secondary">{{ page_num }}</a>
+                                </li>
+
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Вперед</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+
         </div>
     </div>
 
