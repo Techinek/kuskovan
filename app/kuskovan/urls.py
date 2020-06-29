@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-
+from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +25,8 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('', include('pages.urls')),
 ]
+
+handler404 = 'pages.views.error_404'
 
 if settings.DEBUG:
     import debug_toolbar

@@ -9,4 +9,3 @@ urlpatterns = [
     path('<slug:page_slug>/', views.SinglePage.as_view(), name='page')
 ]
 
-handler404 = 'pages.views.error_404'
