@@ -138,8 +138,9 @@ CAPTCHA_NOISE_FUNCTIONS = None
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
-        "removePlugins": "stylesheetparser",
-        "removeEmpty['i']" : False,
+        'removePlugins': 'stylesheetparser',
+        'entities': False,
+        'htmlEncodeOutput': False,
         'skin': 'moono-lisa',
         'allowedContent': True,
         'extraAllowedContent': '*(*);*{*}',
