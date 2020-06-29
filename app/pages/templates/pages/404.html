@@ -7,8 +7,10 @@
 {% block content %}
 
 
-    <div class="page-content nothing-found">
-					<h1 class="entry-title">Ошибка 404</h1>
-					<p>Такой страницы нет на сайте. Вернитесь <a href="{% url 'home' %}">на главную</a></p>
-				</div>
-{% endblock %}
+<div class="text-center">
+    <h1 class="display-3">Ошибка 404</h1>
+    <div class="nothing-found">
+        <p>Такой страницы нет на сайте. Вернитесь <a class="text-dark" href="{% url 'home' %}">на главную</a>.</p>
+    </div>
+
+</div>
