@@ -98,7 +98,7 @@ class PostsByTag(ListView):
 
 class Search(ListView):
     """Search for blog posts and pages"""
-    paginate_by = 5
+    paginate_by = 1
     template_name = 'blog/search.html'
     context_object_name = 'posts'
 

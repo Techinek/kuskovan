@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block seo_title %}Результаты поиска на личном блоге kuskovan{% endblock %}
+{% block meta_description %}Результаты поиска статей по вашему запросу{% endblock %}
+{% block framed_title %}
+    <div class="page-title">
+        <h1>Результаты поиска</h1>
+        <div class="page-subtitle">
+            <nav aria-label="breadcrumb">
+                <ol class="nav">
+                    <li class="breadcrumb-item"><a class="text-secondary" href="/">kuskovan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">результаты поиска</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div class="row">
+        <div class=" col-xs-12 col-sm-12 ">
+
+            <div class="clearfix">
+                <!-- Blog Post  -->
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="item">
+                        <div class="blog-card">
+
+                            <div class="post-info">
+                                <a href="{{ post.get_absolute_url }}">
+                                    <h2 class="blog-item-title">{{ post.title }}</h2>
+                                </a>
+                                <div class="post-date">{{ post.created_at|date:'d.m.Y' }}</div>
+                                <p class="mt-2" >{{ post.intro_text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <h2 class="text-center">К сожалению по вашему запросу ничего не нашлось...</h2>
+                <!-- End of Blog Post  -->
+                {% endif %}
+            </div>
+            {% if page_obj.has_other_pages %}
+                <div class="pagination-area text-uppercase wow fadeInUp animated">
+                    <div class="pagination-area-inner">
+                        <ul class="pagination justify-content-start">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a href="?{{ s }}page={{ page_obj.previous_page_number }}" class="btn btn-primary" tabindex="-1">Назад</a>
+                                </li>
+                            {% endif %}
+                            {% for page_num in page_obj.paginator.page_range %}
+
+                                {% if page_obj.number == page_num %}
+                                    <li class="page-item active" aria-current="page">
+                                        <a href="?{{ s }}page={{ page_num }}" class="btn btn-secondary">{{ page_num }}
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                {% elif page_num > page_obj.number|add:-3 and page_num < page_obj.number|add:3 %}
+                                    <li class="page-item">
+                                        <a href="?{{ s }}page={{ page_num}}" class="btn btn-secondary">{{ page_num }}</a>
+                                    </li>
+
+                                {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a href="?{{ s }}page={{ page_obj.next_page_number }}" class="btn btn-primary">Вперед</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
