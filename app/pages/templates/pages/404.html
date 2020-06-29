@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block seo_title %}{{ post.seo_title }}{% endblock %}
+{% block meta_description %}{{ post.seo_description }}{% endblock %}
+{% block framed_title %}{% endblock %}
+{% block single_post %}<div id="content" class="page-content site-content" role="main">{% endblock %}
+{% block content %}
+    <style>
+    .nothing-found h1 {
+    font-size: 160px;
+    line-height: 1.2em;
+    margin: 0;
+    color: #e5e5e5;
+    text-align: center;
+}
+    </style>
+    <div class="page-content">
+					<h1 class="nf-page-title">404</h1>
+					<p>It looks like nothing was found at this location.</p>
+				</div>
+{% endblock %}

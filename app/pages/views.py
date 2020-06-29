@@ -7,8 +7,13 @@ from django.views.generic.edit import FormMixin, FormView, CreateView
 from .models import Page, Feedback
 from .forms import FeedBackForm
 
+
 def get_home(request):
     return render(request, 'base.html')
+
+
+def error_404(request, exception):
+    return render(request, 'pages/404.html')
 
 
 class SinglePage(DetailView):
@@ -26,5 +31,6 @@ class ContactPage(SuccessMessageMixin,CreateView):
 
     def get_success_message(self, cleaned_data):
         return 'Спасибо за письмо. В ближайшее время свяжусь с вами!'
+
 
 
