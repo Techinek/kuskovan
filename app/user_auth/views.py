@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.shortcuts import render, resolve_url
 from django.urls import reverse_lazy
 from django.views.generic import CreateView

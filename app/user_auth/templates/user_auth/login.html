@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block seo_title %}{{ post.seo_title }}{% endblock %}
-{% block meta_description %}{{ post.seo_description }}{% endblock %}
+{% block seo_title %}Вход на сайт{% endblock %}
+{% block meta_description %}Форма входа на сайт kuskovan{% endblock %}
 {% block framed_title %}
     <div class="page-title">
         <h1>Вход на сайт</h1>
@@ -31,11 +31,14 @@
                     {{ form.as_p }}
                 </div>
                 <button type="submit" class="btn btn-primary">Войти</button>
+                <a class="badge badge-primary"  href="{% url 'reset_password' %}">Забыли пароль?</a>
             </form>
+
+
             <hr>
             <div class="text-center">
                 <p class="text-center">
-                     <a href="{% url 'register' %}" class="btn btn-secondary">Если не зарегистрированы, то пройдите регистрацию</a>
+                     <a href="{% url 'register' %}" class="btn btn-secondary btn-lg btn-block">Если не зарегистрированы, то пройдите регистрацию</a>
                 </p>
             </div>
         </div>
