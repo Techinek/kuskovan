@@ -1,14 +1,9 @@
-from datetime import datetime
-
-from django.conf import settings
-from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import F, Q
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.views.generic.edit import FormMixin, FormView
 from django.contrib import messages
-from django.contrib.auth import login, logout
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
 
@@ -16,7 +11,7 @@ from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.views.generic.base import View
 
 from .models import Category, Tag, Post, Comment
-from .forms import CommentForm, UserLoginForm, UserRegisterForm
+from .forms import CommentForm
 
 
 class PostDetail(SuccessMessageMixin, DetailView, FormView):
@@ -117,20 +112,6 @@ class Search(ListView):
         context['s'] = f"s={self.request.GET.get('s')}&"
         return context
 
-
-class RegisterUser(CreateView):
-    form_class = UserRegisterForm
-    success_url = reverse_lazy('login')
-    template_name = 'blog/register.html'
-
-
-class LoginUser(LoginView):
-    template_name = 'blog/login.html'
-    form_class = UserLoginForm
-
-    def get_success_url(self):
-        url = self.get_redirect_url()
-        return url or resolve_url(settings.LOGIN_REDIRECT_URL)
 
 
 

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'pages.apps.PagesConfig',
     'menu.apps.MenuConfig',
+    'user_auth.apps.UserAuthConfig',
 
 
 

@@ -79,6 +79,7 @@ class Post(models.Model):
         verbose_name_plural = 'Статьи'
         ordering = ['-created_at']
 
+
 class Comment(models.Model):
     """Model for user commentaries related to blog posts"""
     author = models.ForeignKey(to=User, verbose_name='Автор', on_delete=models.CASCADE)
