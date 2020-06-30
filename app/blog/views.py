@@ -10,6 +10,7 @@ from django.views.generic.edit import FormMixin, FormView
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
 from django.shortcuts import render, get_object_or_404, redirect, resolve_url
 from django.views.generic.base import View
@@ -38,6 +39,11 @@ class PostDetail(SuccessMessageMixin, DetailView, FormView):
         post = get_object_or_404(Post, slug=self.kwargs['post_slug'])
         form.instance.author = self.request.user
         form.instance.post = post
+        send_mail(subject=post.title,
+                  message='Новый комментарий к посту, нужна модерация',
+                  from_email='info@kuskovan.ru',
+                  recipient_list=['andreykusk@yandex.ru'],
+                  fail_silently=False)
         form.save()
         return super().form_valid(form)
 

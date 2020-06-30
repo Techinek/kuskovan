@@ -18,12 +18,14 @@ class CommentForm(forms.ModelForm):
                 'placeholder': "Ваш комментарий"
             }),
         label=False)
+
     class Meta:
         model = Comment
         fields = ['content', ]
 
 
 class UserRegisterForm(UserCreationForm):
+    """Class for user creation form"""
     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password2 = forms.CharField(label='Подтверждение пароля', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
@@ -59,6 +61,7 @@ class UserRegisterForm(UserCreationForm):
 
 
 class UserLoginForm(AuthenticationForm):
+    """Class for user login form"""
     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     error_messages = {
